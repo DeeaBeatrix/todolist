@@ -3,6 +3,7 @@ const newToDoInput = document.querySelector('.add-todo-input');
 const todosList = document.querySelector('.todos-list');
 const addTodoError = document.querySelector('.add-todo-error');
 const contorizator = document.querySelector('.contorizator');
+const enterTask = document.querySelector('.add-todo-input-container');
 
 let todoArray = [];
 
@@ -13,6 +14,7 @@ const addToDo = () => {
 
   // reset input
   newToDoInput.value = '';
+
 
   if (newToDo.length === 0) {
     // afisam mesajul de eroare
@@ -34,12 +36,8 @@ const addToDo = () => {
       <button class="delete-todo"> X </button>
     `;
 
-    newToDoContainer.style.borderBottom = "1px solid #ccc";
-    newToDoContainer.style.padding = "8px";
-    // const separator = document.createElement("hr");
-    // separator.classList.add("separator");
-    // newToDoContainer.appendChild(separator);
-
+    newToDoContainer.style.borderBottom = "1px solid #3d3d3d";
+    newToDoContainer.style.padding = "20px";
   
     // adaugam list item-ul in lista de todo-uri
     todosList.appendChild(newToDoContainer);
@@ -66,11 +64,25 @@ const addToDo = () => {
     deleteButton.addEventListener("click", deleteToDo);
     todoCheckbox.addEventListener("change", strikeThrough);
   }
+
+  // ---- Enter Task ----
+  const placeTask = (e) => {
+    e.preventDefault();
+    addToDo();
+  };
+   enterTask.addEventListener('submit', placeTask);
+
+   newToDoInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addToDo();
+    }
+   });
 };
+addToDo()
+// addToDoButton.addEventListener('click', addToDo);
 
 
-
-addToDoButton.addEventListener('click', addToDo);
 
 
 // sa se creeze o functie care primeste ca parametru un string
