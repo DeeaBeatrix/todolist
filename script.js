@@ -1,9 +1,10 @@
-const addToDoButton = document.querySelector('.add-todo-button');
+// const addToDoButton = document.querySelector('.add-todo-button');
 const newToDoInput = document.querySelector('.add-todo-input');
 const todosList = document.querySelector('.todos-list');
 const addTodoError = document.querySelector('.add-todo-error');
 const contorizator = document.querySelector('.contorizator');
 const enterTask = document.querySelector('.add-todo-input-container');
+
 
 let todoArray = [];
 
@@ -19,6 +20,7 @@ const addToDo = () => {
   if (newToDo.length === 0) {
     // afisam mesajul de eroare
     addTodoError.style.display = "block";
+    console.log('test')
 
     // return; // dand return functia se opreste aici si nu merge mai departe - aici gen nu mai creeaza Delete butoane in continuu
   } else {
@@ -64,24 +66,15 @@ const addToDo = () => {
     deleteButton.addEventListener("click", deleteToDo);
     todoCheckbox.addEventListener("change", strikeThrough);
   }
-
-  // ---- Enter Task ----
-  const placeTask = (e) => {
-    e.preventDefault();
-    addToDo();
-  };
-   enterTask.addEventListener('submit', placeTask);
-
-   newToDoInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      addToDo();
-    }
-   });
 };
-addToDo()
-// addToDoButton.addEventListener('click', addToDo);
-
+  // addToDo()
+  // addToDoButton.addEventListener('click', addToDo);
+  
+  newToDoInput.addEventListener('keydown', (e) => {
+   if (e.key === 'Enter') {
+     addToDo();
+   }
+  });
 
 
 
